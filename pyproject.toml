@@ -7,7 +7,12 @@ authors = [
     { name = "JiSeong Lee", email = "cocoquiet@knu.ac.kr" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "dotenv>=0.9.9",
+    "fastapi>=0.162.2",
+    "openai>=3.46.0",
+    "uvicorn>=0.54.0",
+]
 
 [project.scripts]
 upstage-demo-backend = "upstage_demo_backend:main"
