@@ -19,15 +19,11 @@ def upload(file_path: str) -> str:
             client = OpenAI(
                 api_key=UST_API_KEY,
                 base_url=f"https://api.upstage.ai/v2",
-                default_headers=UST_HEADER
+                default_headers=UST_HEADER,
             )
 
-            response = client.files.create(
-                file=f,
-                purpose="user_data"
-            )
-            
+            response = client.files.create(file=f, purpose="user_data")
+
             return response.id
         except Exception as e:
             raise RuntimeError(f"Failed to upload file: {e}")
-        
