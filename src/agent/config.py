@@ -14,7 +14,6 @@ UST_AGNT_ID = os.getenv("UST_AGNT_ID")
 UST_CNFG_ID = os.getenv("UST_CNFG_ID", "1")
 
 
-
 # DIRS
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -27,4 +26,3 @@ def check_envs():
         raise ValueError("UST_PROJ_ID is not set in the environment variables.")
     if not UST_AGNT_ID:
         raise ValueError("UST_AGNT_ID is not set in the environment variables.")
-    

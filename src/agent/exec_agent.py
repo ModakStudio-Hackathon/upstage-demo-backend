@@ -1,7 +1,9 @@
 import json
 import time
+
 from openai import OpenAI
-from config import UST_API_KEY, UST_HEADER, UST_AGNT_ID, UST_CNFG_ID
+
+from .config import UST_AGNT_ID, UST_API_KEY, UST_CNFG_ID, UST_HEADER
 
 
 class USTAgent:
@@ -9,14 +11,19 @@ class USTAgent:
         self.client = OpenAI(
             api_key=UST_API_KEY,
             base_url=f"https://api.upstage.ai/v2",
-            default_headers=UST_HEADER
+            default_headers=UST_HEADER,
         )
 
     def create_job(self, file_id: str) -> str:
         response = self.client.responses.create(
             model=UST_AGNT_ID,
-            input=[{"role": "user", "content": [{"type": "input_file", "file_id": file_id}]}],
-            extra_body={"config_id": UST_CNFG_ID}
+            input=[
+                {
+                    "role": "user",
+                    "content": [{"type": "input_file", "file_id": file_id}],
+                }
+            ],
+            extra_body={"config_id": UST_CNFG_ID},
         )
         return response.id
 
@@ -31,7 +38,7 @@ class USTAgent:
                 f"Job {job_id} ended with status {response.status}: "
                 f"{response.error or 'No error details'}"
             )
-        #print(f"Job {job_id} completed.")
+        # print(f"Job {job_id} completed.")
 
         return response
 
