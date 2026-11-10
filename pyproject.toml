@@ -7,7 +7,16 @@ authors = [
     { name = "JiSeong Lee", email = "cocoquiet@knu.ac.kr" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "alembic>=1.20.1",
+    "dotenv>=0.9.9",
+    "fastapi>=0.162.2",
+    "openai>=3.46.0",
+    "psycopg[binary]>=3.3.8",
+    "python-multipart>=0.0.20",
+    "sqlalchemy>=2.1.8",
+    "uvicorn>=0.54.0",
+]
 
 [project.scripts]
 upstage-demo-backend = "upstage_demo_backend:main"
@@ -15,3 +24,6 @@ upstage-demo-backend = "upstage_demo_backend:main"
 [build-system]
 requires = ["uv_build>=0.13.6,<0.14.0"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = ["upstage_demo_backend", "agent"]

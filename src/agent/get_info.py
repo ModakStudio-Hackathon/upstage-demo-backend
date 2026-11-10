@@ -6,19 +6,26 @@ python get_info.py testData.pdf
 
 """
 
-from pathlib import Path
 import argparse
 import json
+from pathlib import Path
 
-from config import check_envs
-from upload import upload
-from exec_agent import USTAgent
+if __package__:
+    from .config import check_envs
+    from .exec_agent import USTAgent
+    from .upload import upload
+else:
+    from config import check_envs
+    from exec_agent import USTAgent
+    from upload import upload
 
 
 def main():
     print("Starting the file upload and processing...")
 
-    parser = argparse.ArgumentParser(description="Upload a file and get its properties.")
+    parser = argparse.ArgumentParser(
+        description="Upload a file and get its properties."
+    )
     parser.add_argument("file_path", type=str, help="Path to the file to be uploaded.")
     args = parser.parse_args()
 
@@ -39,6 +46,7 @@ def main():
     # JSON 형태 출력
     print("Result:")
     print(json.dumps(result, indent=4))
+
 
 if __name__ == "__main__":
     main()
