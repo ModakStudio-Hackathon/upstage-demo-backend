@@ -6,13 +6,18 @@ python get_info.py testData.pdf
 
 """
 
-from pathlib import Path
 import argparse
 import json
+from pathlib import Path
 
-from config import check_envs
-from upload import upload
-from exec_agent import USTAgent
+if __package__:
+    from .config import check_envs
+    from .exec_agent import USTAgent
+    from .upload import upload
+else:
+    from config import check_envs
+    from exec_agent import USTAgent
+    from upload import upload
 
 
 def main():

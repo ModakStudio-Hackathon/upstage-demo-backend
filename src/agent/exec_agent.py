@@ -1,7 +1,9 @@
 import json
 import time
+
 from openai import OpenAI
-from config import UST_API_KEY, UST_HEADER, UST_AGNT_ID, UST_CNFG_ID
+
+from .config import UST_AGNT_ID, UST_API_KEY, UST_CNFG_ID, UST_HEADER
 
 
 class USTAgent:
